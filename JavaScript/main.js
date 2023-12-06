@@ -62,7 +62,7 @@ let questions = [
     {
         image:"/Assets/pan.avif",
         question: "Guden Pan syns ofta spelandes vilket instrument?",
-        type: "tf",
+        type: "mc",
         answer: ["d"],
         choice: ["Gitarr", "Trumma", "Fiol", "Flöjt"],
     },
@@ -90,7 +90,8 @@ const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 let answerInputs;
 let labelForms;
 
-//Variables for answer templates and selector for the answer container
+//Variables for answer templates and selector for the answer container 
+//(gjorde ett medvetet val att använd en sträng och fylla i html)
 let answerAlternativesAinner = `<div class="answer-alternatives" id="answer-alternativesA"><p>True or False?</p><input type="radio" id="tf-a" name="tf" value="true"><label for="tf-a">Sant</label><br><input type="radio" id="tf-b" name="tf" value="false"><label for="tf-b">Falskt</label><br></div>`;
 const answerAlternativesA = document.querySelector("#answer-alternativesA");
 
