@@ -121,4 +121,8 @@ commitBtn.addEventListener("click", () => {
             answerArr.push(input.value);
         }
     });
+    
+    if(answerArr.toString() === questionsCopy[q].answer.toString()){
+        alert("yeehaw!");
+    }
 });
