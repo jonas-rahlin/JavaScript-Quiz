@@ -1,43 +1,43 @@
 let questions = [
     {
-        image:"x",
-        question: "Apollo representerar Solen?",
+        image:"/Assets/osirisset.avif",
+        question: "Dom egyptiska gudarna Osiris och Set är bröder.",
         type: "tf",
         answer: [true],
     },
     {
-        image:"x",
-        question: "Myten om Regnbågsormen härstammar från Aboriginerna i Australien?",
+        image:"/Assets/rainbow.avif",
+        question: "Myten om Regnbågsormen härstammar från Aboriginerna i Australien.",
         type: "tf",
         answer: [true],
     },
     {
-        image:"x",
-        question: "Judas stam representeras ofta av vilket djur?",
+        image:"/Assets/judah.avif",
+        question: "Judahs stam representeras ofta av vilket djur?",
         type: "mc",
         answer: ["b"],
         choice: ["Elefanten", "Lejonet", "Ormen", "Örnen"],
     },
     {
-        image:"x",
+        image:"/Assets/apple.avif",
         question: "Vilken grekisk guddina skapade kaos på gudafest med sitt gyllende äpple?",
         type: "mc",
         answer: ["b"],
         choice: ["Athena", "Eris", "Aphrodite", "Hecate"],
     },
     {
-        image:"x",
-        question: "Vad heter Odens korpar",
+        image:"/Assets/raven.avif",
+        question: "Vad heter Odens korpar?",
         type: "cb",
         answer: ["a", "d"],
         choice: ["Hugin", "Gråan", "Svarv", "Munin"],
     },
     {
-        image:"x",
-        question: "Vilka av följande är andra namn för Shiva",
+        image:"/Assets/shiva.avif",
+        question: "Vilka av följande är andra namn för Shiva?",
         type: "cb",
-        answer: ["a", "b"],
-        choice: ["Bholenath", "Shankara", "Rama", "Ganesha"],
+        answer: ["a", "b", "d"],
+        choice: ["Bholenath", "Shankara", "Rama", "Shambho"],
     },
 ];
 
@@ -94,7 +94,9 @@ let generateQuestion = () =>{
     answerArr = [];
     q = getRandomArrIndex(questionsCopy);
 
+    questionImage.src = questionsCopy[q].image;
     questionText.innerText = questionsCopy[q].question;
+    
 
     if(questionsCopy[q].type === "tf"){
         answerSection.innerHTML = answerAlternativesAinner;
