@@ -1,3 +1,5 @@
 Skapade HTML
+- Alla element som ska genereras i JS skapades först i HTML för översikt, och funktionstestning. Och flyttades sedan över till JS variabler.
+
 Skapade temporär styling
 Byggde upp variabler i js
