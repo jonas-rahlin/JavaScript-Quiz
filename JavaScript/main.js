@@ -57,9 +57,17 @@ const answerSection = document.querySelector('#answer');
 const answerAlternatives = document.querySelector('#answer-alternatives');
 const commitBtn = document.querySelector('#answer-commit__btn');
 
-const trueFalse = [...document.querySelectorAll('[name = tf]')];
-const multipleChoice = [...document.querySelectorAll('[name = mc]')];
-const checkBox = [...document.querySelectorAll('[name = cb]')];
+//Variables for answers depending on type, and function for defining them
+let tf;
+let mc;
+let cb;
+
+let setAnswerVars = ()=> {
+    tf = [...document.querySelectorAll('[name = tf]')];
+    mc = [...document.querySelectorAll('[name = mc]')];
+    cb = [...document.querySelectorAll('[name = cb]')];
+}
+
 
 const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 
@@ -111,6 +119,7 @@ let generateAnswers = () =>{
 startBtn.addEventListener("click", ()=>{
     questionsCopy = questions;
     generateAnswers();
+    setAnswerVars();
 })
 
 //Answer question and generate a new one
@@ -119,7 +128,7 @@ startBtn.addEventListener("click", ()=>{
 
     if(questionsCopy[q].type === "tf"){
         
-        trueFalse.filter((element)=>{
+        .filter((element)=>{
             
         })
     }
@@ -131,9 +140,6 @@ startBtn.addEventListener("click", ()=>{
     else if(questionsCopy[q].type === "cb"){
         
     }
-
-
-    generateAnswers();
 }) */
 
 
