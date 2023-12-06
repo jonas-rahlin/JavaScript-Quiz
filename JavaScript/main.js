@@ -63,13 +63,13 @@ const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 let answerInputs;
 
 //Variables for answer templates and selector for the answer container
-let answerAlternativesAinner = `<div class="answer-alternatives" id="answer-alternativesA"><p>True or False?</p><input type="radio" id="true" name="tf" value="true"><label for="html">TRUE</label><br><input type="radio" id="false" name="tf" value="false"><label for="css">False</label><br></div>`;
+let answerAlternativesAinner = `<div class="answer-alternatives" id="answer-alternativesA"><p>True or False?</p><input type="radio" id="tf-a" name="tf" value="true"><label for="tf-a">Sant</label><br><input type="radio" id="tf-b" name="tf" value="false"><label for="tf-b">Falskt</label><br></div>`;
 const answerAlternativesA = document.querySelector("#answer-alternativesA");
 
-let answerAlternativesBinner = `<div class="answer-alternatives" id="answer-alternativesB"><p>Choose One:</p><input type="radio" id="mc-a" name="mc" value="a"><label for="A">A</label><br><input type="radio" id="mc-b" name="mc" value="b"><label for="B">B</label><br><input type="radio" id="mc-c" name="mc" value="c"><label for="C">C</label><br><input type="radio" id="mc-d" name="mc" value="d"><label for="D">D</label><br></div>`
+let answerAlternativesBinner = `<div class="answer-alternatives" id="answer-alternativesB"><p>Choose One:</p><input type="radio" id="mc-a" name="mc" value="a"><label for="mc-a"></label><input type="radio" id="mc-b" name="mc" value="b"><label for="mc-b"></label><input type="radio" id="mc-c" name="mc" value="c"><label for="mc-c"></label><input type="radio" id="mc-d" name="mc" value="d"><label for="mc-d"></label></div>`;
 const answerAlternativesB = document.querySelector("#answer-alternativesB");
 
-let answerAlternativesCinner = `<div class="answer-alternatives" id="answer-alternativesC"><p>Which answers are correct?</p><input type="checkbox" id="cb-a" name="cb" value="a"><label for="A">A</label><br><input type="checkbox" id="cb-b" name="cb" value="b"><label for="B">B</label><br><input type="checkbox" id="cb-c" name="cb" value="c"><label for="C">C</label><br><input type="checkbox" id="cb-d" name="cb" value="d"><label for="D">D</label><br></div>`
+let answerAlternativesCinner = `<div class="answer-alternatives" id="answer-alternativesC"><p>Which answers are correct?</p><input type="checkbox" id="cb-a" name="cb" value="a"><label for="cb-a"></label><input type="checkbox" id="cb-b" name="cb" value="b"><label for="cb-b"></label><input type="checkbox" id="cb-c" name="cb" value="c"><label for="cb-c"></label><input type="checkbox" id="cb-d" name="cb" value="d"><label for="cb-d"></label></div>`;
 const answerAlternativesC = document.querySelector("#answer-alternativesC");
 
 
@@ -87,10 +87,14 @@ let getRandomArrIndex = (arr) =>{
 }
 
 //Generate a question
-let generateAnswers = () =>{
+let generateQuestion = () =>{
     q = getRandomArrIndex(questionsCopy);
 
     questionText.innerText = questionsCopy[q].question;
+
+/*     for(let i = 0; i<questionsCopy.choice.length; i++){
+
+    } */
     
     if(questionsCopy[q].type === "tf"){
         answerSection.innerHTML = answerAlternativesAinner;
@@ -111,7 +115,7 @@ let generateAnswers = () =>{
 //Start Game
 startBtn.addEventListener("click", ()=>{
     questionsCopy = questions;
-    generateAnswers();
+    generateQuestion();
 })
 
 commitBtn.addEventListener("click", () => {
@@ -121,7 +125,7 @@ commitBtn.addEventListener("click", () => {
             answerArr.push(input.value);
         }
     });
-    
+
     if(answerArr.toString() === questionsCopy[q].answer.toString()){
         alert("yeehaw!");
     }

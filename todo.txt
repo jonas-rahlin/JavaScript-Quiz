@@ -2,8 +2,7 @@
 2. Design simple wireframe (then style as we go).
 3. Start building basic HTML and then go as needed from there.
 
-@ function for answering questions
-    check if arrays match
+@ textContent Questions
 
 
 Ideas:
