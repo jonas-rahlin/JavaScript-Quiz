@@ -22,12 +22,38 @@
                 <p id="question__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ipsa magnam laboriosam minus voluptatibus voluptatum amet reiciendis, eveniet animi iusto ut id, sequi quos deleniti!</p>
             </article>
             <article id="answer">
-                <div id="answer-alternatives">
-                    
+                <div class="answer-alternatives" id="answer-alternativesA">
+                    <p>True or False?</p>
+                    <input type="radio" id="true" name="tf" value="true">
+                    <label for="html">TRUE</label><br>
+                    <input type="radio" id="false" name="tf" value="false">
+                    <label for="css">False</label><br>
+                </div>
+                <div class="answer-alternatives displayNone" id="answer-alternativesB">
+                    <p>Choose One:</p>
+                    <input type="radio" id="mc-a" name="mc" value="a">
+                    <label for="A">A</label><br>
+                    <input type="radio" id="mc-b" name="mc" value="b">
+                    <label for="B">B</label><br>
+                    <input type="radio" id="mc-c" name="mc" value="c">
+                    <label for="C">C</label><br>
+                    <input type="radio" id="mc-d" name="mc" value="d">
+                    <label for="D">D</label><br>
+                </div>
+                <div class="answer-alternatives displayNone" id="answer-alternativesC">
+                    <p>Which answers are correct?</p>
+                    <input type="checkbox" id="cb-a" name="cb" value="a">
+                    <label for="A">A</label><br>
+                    <input type="checkbox" id="cb-b" name="cb" value="b">
+                    <label for="B">B</label><br>
+                    <input type="checkbox" id="cb-c" name="cb" value="c">
+                    <label for="C">C</label><br>
+                    <input type="checkbox" id="cb-d" name="cb" value="d">
+                    <label for="D">D</label><br>
                 </div>
                 <button id="answer-commit__btn">ANSWER!</button>
             </article>
-            <!-- <button id="gameArea-resetGame__btn">RESTART!</button> -->
+            <button id="gameArea-resetGame__btn">RESTART!</button>
         </section>
     </main>
     <script src="../JavaScript/main.js"></script>
