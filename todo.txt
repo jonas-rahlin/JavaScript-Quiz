@@ -5,6 +5,4 @@
 
 
 Ideas:
-    Separate question types in arrays, instead of having them in object keys. For easier organisation?
-
     True / False = Green / Red linethrough.
