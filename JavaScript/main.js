@@ -9,7 +9,7 @@ let questions = [
         image:"x",
         question: "Myten om Regnbågsormen härstammar från Aboriginerna i Australien?",
         type: "tf",
-        answer: [true]
+        answer: [true],
     },
     {
         image:"x",
@@ -59,8 +59,9 @@ const commitBtn = document.querySelector('#answer-commit__btn');
 
 const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 
-//Selector for answer inputs (content is set in later functionality)
+//Selector for answer inputs and forms (content is set in later functionality)
 let answerInputs;
+let labelForms;
 
 //Variables for answer templates and selector for the answer container
 let answerAlternativesAinner = `<div class="answer-alternatives" id="answer-alternativesA"><p>True or False?</p><input type="radio" id="tf-a" name="tf" value="true"><label for="tf-a">Sant</label><br><input type="radio" id="tf-b" name="tf" value="false"><label for="tf-b">Falskt</label><br></div>`;
@@ -77,9 +78,11 @@ const answerAlternativesC = document.querySelector("#answer-alternativesC");
 
 //Game functionality
 
-//Variables for storing index and copy of questions array
+//Variables for storing index, copy of questions array, arr for colleecting answers, and scorekeeper.
 let q;
 let questionsCopy;
+let answerArr = [];
+let score = 0;
 
 //Generate a random int based on how many questions there is
 let getRandomArrIndex = (arr) =>{
@@ -88,14 +91,11 @@ let getRandomArrIndex = (arr) =>{
 
 //Generate a question
 let generateQuestion = () =>{
+    answerArr = [];
     q = getRandomArrIndex(questionsCopy);
 
     questionText.innerText = questionsCopy[q].question;
 
-/*     for(let i = 0; i<questionsCopy.choice.length; i++){
-
-    } */
-    
     if(questionsCopy[q].type === "tf"){
         answerSection.innerHTML = answerAlternativesAinner;
         answerInputs = [...document.querySelectorAll('[name = tf]')];
@@ -108,6 +108,14 @@ let generateQuestion = () =>{
         answerSection.innerHTML = answerAlternativesCinner;
         answerInputs = [...document.querySelectorAll('[name = cb]')];
     }
+
+    labelForms = [...document.querySelectorAll("label")];
+
+    for(let i = 0; i<labelForms.length; i++){
+        if(questionsCopy[q].type != "tf"){
+            labelForms[i].innerText = questionsCopy[q].choice[i];
+        }
+    }
 }
 
 //Start Game
@@ -117,8 +125,6 @@ startBtn.addEventListener("click", ()=>{
 })
 
 commitBtn.addEventListener("click", () => {
-    questionsCopy.splice(q, 1);
-    let answerArr = [];
     answerInputs.forEach((input) => {
         if (input.checked === true) {
             answerArr.push(input.value);
@@ -127,5 +133,10 @@ commitBtn.addEventListener("click", () => {
 
     if(answerArr.toString() === questionsCopy[q].answer.toString()){
         alert("yeehaw!");
+        score ++;
     }
+    else(alert("oh nooes!"));
+
+    questionsCopy.splice(q, 1);
+    generateQuestion();
 });
