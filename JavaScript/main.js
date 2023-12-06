@@ -39,6 +39,33 @@ let questions = [
         answer: ["a", "b", "d"],
         choice: ["Bholenath", "Shankara", "Rama", "Shambho"],
     },
+    {
+        image:"/Assets/prometheus.avif",
+        question: "Vad stal Prometheus från gudarna för att ge till människorna?",
+        type: "mc",
+        answer: ["a"],
+        choice: ["Eld", "Vin", "Guld", "Jorden"],
+    },
+    {
+        image:"/Assets/frostgiant.avif",
+        question: "Frostjättarna från nordisk mytologi bor i Muspelheim.",
+        type: "tf",
+        answer: [true],
+    },
+    {
+        image:"/Assets/gita.avif",
+        question: "Vem slåss vid Krishnas sida på stridsvagnen i Bhagavad Gita?",
+        type: "mc",
+        answer: ["a"],
+        choice: ["Arjuna", "Hanuman", "Kripa", "Subhadra"],
+    },
+    {
+        image:"/Assets/pan.avif",
+        question: "Guden Pan syns ofta spelandes vilket instrument?",
+        type: "tf",
+        answer: ["d"],
+        choice: ["Gitarr", "Trumma", "Fiol", "Flöjt"],
+    },
 ];
 
 // Selectors Header Section
