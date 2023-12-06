@@ -108,8 +108,6 @@ let generateQuestion = () =>{
         answerSection.innerHTML = answerAlternativesCinner;
         answerInputs = [...document.querySelectorAll('[name = cb]')];
     }
-
-    questionsCopy.splice(q, 1);
 }
 
 //Start Game
@@ -119,6 +117,7 @@ startBtn.addEventListener("click", ()=>{
 })
 
 commitBtn.addEventListener("click", () => {
+    questionsCopy.splice(q, 1);
     let answerArr = [];
     answerInputs.forEach((input) => {
         if (input.checked === true) {
