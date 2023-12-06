@@ -61,13 +61,11 @@ const commitBtn = document.querySelector('#answer-commit__btn');
 let tf;
 let mc;
 let cb;
-
 let setAnswerVars = ()=> {
     tf = [...document.querySelectorAll('[name = tf]')];
     mc = [...document.querySelectorAll('[name = mc]')];
     cb = [...document.querySelectorAll('[name = cb]')];
 }
-
 
 const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 
@@ -101,6 +99,7 @@ let generateAnswers = () =>{
     q = getRandomArrIndex(questionsCopy);
 
     questionText.innerText = questionsCopy[q].question;
+    
     if(questionsCopy[q].type === "tf"){
         answerSection.innerHTML = answerAlternativesAinner;
     }
@@ -113,7 +112,6 @@ let generateAnswers = () =>{
 
     questionsCopy.splice(q, 1);
 }
-
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
@@ -141,18 +139,3 @@ startBtn.addEventListener("click", ()=>{
         
     }
 }) */
-
-
-
-
-
-
-
-
-/* if(questionsCopy[q].type === "mc"){
-    answerSection.innerHTML = answerAlternativesBinner;
-}
-
-if(questionsCopy[q].type === "cb"){
-    answerSection.innerHTML = answerAlternativesCinner;
-} */
