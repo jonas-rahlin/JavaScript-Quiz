@@ -91,6 +91,8 @@ const commitBtn = document.querySelector("#commit-answer__btn");
 
 const resetGameBtn = document.querySelector("#reset-game__btn");
 
+const messageDisplay = document.querySelector("#message-display");
+
 //Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;
 let labelForms;
@@ -210,7 +212,7 @@ startBtn.addEventListener("click", ()=>{
 
     setTimeout(()=>{
         gameArea.classList.remove("displayNone");
-    }, "1000");
+    }, "1200");
 })
 
 commitBtn.addEventListener("click", () => {
@@ -221,12 +223,26 @@ commitBtn.addEventListener("click", () => {
     });
 
     if(answerArr.toString() === questionsCopy[q].answer.toString()){
-        alert("yeehaw!");
         score ++;
-    } else(alert("oh nooes!"));
+        let correct = document.createElement("h2");
+        correct.textContent = "RÄTT!";
+        messageDisplay.append(correct);
+    } 
+    else{
+        let wrong = document.createElement("h2");
+        wrong.textContent = "FEL!";
+        messageDisplay.append(wrong);
+    };
+
+    messageDisplay.classList.remove("displayNone");
 
     questionsCopy.splice(q, 1);
-    generateQuestion();
+
+    setTimeout(()=>{
+        messageDisplay.classList.add("displayNone");
+        generateQuestion();
+        messageDisplay.innerHTML = "";
+    },1200)
 });
 
 //Enable Dark Mode
@@ -235,3 +251,5 @@ darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.lastChild.classList.toggle("displayNone");
     document.body.classList.toggle("darkMode");
 })
+
+
