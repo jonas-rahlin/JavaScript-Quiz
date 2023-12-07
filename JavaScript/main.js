@@ -50,14 +50,14 @@ let questions = [
         image:"/Assets/frostgiant.avif",
         question: "Frostjättarna från nordisk mytologi bor i Muspelheim.",
         type: "tf",
-        answer: [true],
+        answer: [false],
     },
     {
         image:"/Assets/gita.avif",
-        question: "Vem slåss vid Krishnas sida på stridsvagnen i Bhagavad Gita?",
+        question: "Vilken gud slåss vid Arjunas sida på stridsvagnen i Bhagavad Gita?",
         type: "mc",
         answer: ["a"],
-        choice: ["Arjuna", "Hanuman", "Kripa", "Subhadra"],
+        choice: ["Krishna", "Hanuman", "Ganesha", "Lakshmi"],
     },
     {
         image:"/Assets/pan.avif",
