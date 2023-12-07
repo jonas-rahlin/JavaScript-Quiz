@@ -233,5 +233,5 @@ commitBtn.addEventListener("click", () => {
 darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.firstChild.classList.toggle("displayNone");
     darkModeBtn.lastChild.classList.toggle("displayNone");
-    alert("hey");
+    document.body.classList.toggle("darkMode");
 })
