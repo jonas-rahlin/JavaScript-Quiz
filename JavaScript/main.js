@@ -74,10 +74,12 @@ let questions = [
 
 
 // Selectors Main Section
-const darkModeBtn = document.querySelector("#darkMode__btn");
-const startBtn = document.querySelector("#startGame__btn");
+const startArea = document.querySelector("#start-area");
 
-const gameArea = document.querySelector("#gameArea");
+const darkModeBtn = document.querySelector("#dark-mode__btn");
+const startBtn = document.querySelector("#start-game__btn");
+
+const gameArea = document.querySelector("#game-area");
 
 
 const questionSection = document.querySelector("#question");
@@ -85,7 +87,6 @@ const questionImage = document.querySelector("#question__img");
 const questionText = document.querySelector("#question__p");
 
 const answerSection = document.querySelector("#answer");
-const answerAlternatives = document.querySelector("#answer-alternatives");
 const commitBtn = document.querySelector("#commitAnswer__btn");
 
 const resetGameBtn = document.querySelector("#resetGame__btn");
@@ -107,14 +108,11 @@ let createAnswerAlts = () => {
 
     //Global Code for all types of answers
     let div = document.createElement("div");
-    let p = document.createElement("p");
-    div.appendChild(p);
     div.className = "answer-alternatives";
 
     //If question type is: True or False
     if(questionsCopy[q].type === "tf"){
         div.id = "answer-alternativesA";
-        p.textContent = "Sant eller Falskt?";
 
         let trueFalseLabels = ["Sant", "Falskt"];
         trueFalseLabels.forEach( (labelText, index) => {
@@ -137,7 +135,6 @@ let createAnswerAlts = () => {
     //If questions type is: Multiple Choice
     else if(questionsCopy[q].type === "mc"){
         div.id = "answer-alternativesB";
-        p.textContent = "Vilket svar är rätt?";
 
         let radioButtons = ["a", "b", "c", "d"];
         radioButtons.forEach(function (value) {
@@ -159,7 +156,6 @@ let createAnswerAlts = () => {
     //If questions type is: Checkbox
     else if(questionsCopy[q].type === "cb"){
         div.id = "answer-alternativesC";
-        p.textContent = "Vilka svar är rätt?";
 
         let checkboxes = ["a", "b", "c", "d"];
 
@@ -181,7 +177,7 @@ let createAnswerAlts = () => {
 
     answerSection.appendChild(div);
 
-    labelForms = [...document.querySelectorAll("label")];
+    let labelForms = [...document.querySelectorAll("label")];
     for(let i = 0; i<labelForms.length; i++){
         if(questionsCopy[q].type != "tf"){
             labelForms[i].innerText = questionsCopy[q].choice[i];
@@ -209,6 +205,12 @@ let generateQuestion = () =>{
 startBtn.addEventListener("click", ()=>{
     questionsCopy = questions;
     generateQuestion();
+
+    startArea.classList.add("displayNone");
+
+    setTimeout(()=>{
+        gameArea.classList.remove("displayNone");
+    }, "1000");
 })
 
 commitBtn.addEventListener("click", () => {
@@ -226,3 +228,10 @@ commitBtn.addEventListener("click", () => {
     questionsCopy.splice(q, 1);
     generateQuestion();
 });
+
+//Enable Dark Mode
+darkModeBtn.addEventListener("click", ()=>{
+    darkModeBtn.firstChild.classList.toggle("displayNone");
+    darkModeBtn.lastChild.classList.toggle("displayNone");
+    alert("hey");
+})

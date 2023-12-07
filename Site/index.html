@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Quiz</title>
     <link rel="stylesheet" href="../Css/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/50f519febd.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-
-    </header>
     <main>
-        <div class="container">
+        <button id="dark-mode__btn"><i class="fa-regular fa-moon"></i><i class="fa-solid fa-moon displayNone"></i></button>
+        <section id="start-area">
             <h1>Template Name</h1>
-            <button id="darkMode__btn">DM</button>
-            <button id="startGame__btn">START GAME</button>
-        </div>
-        <section id="gameArea" class="displayNone">
+            <button id="start-game__btn"><i class="fa-regular fa-circle-play"></i></button>
+        </section>
+        <section id="game-area" class="displayNone">
             <article id="question">
                 <img id="question__img" src="" alt="">
                 <p id="question__p"></p>
             </article>
             <article id="answer">
-
+                
             </article>
-            <button id="commitAnswer__btn">ANSWER!</button>
-            <button id="resetGame__btn">RESTART!</button>
+            <button id="commit-answer__btn">SVARA</button>
+            <button id="reset-game__btn"><i class="fa-solid fa-rotate-right"></i></button>
         </section>
     </main>
     <script src="../JavaScript/main.js"></script>
