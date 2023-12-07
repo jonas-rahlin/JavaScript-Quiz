@@ -70,23 +70,25 @@ let questions = [
     },
 ];
 
-// Selectors Header Section
-const titleBar = document.querySelector('#titleBar');
-const darkModeBtn = document.querySelector('#titleBar-darkMode__btn');
+
+
 
 // Selectors Main Section
-const gameArea = document.querySelector('#gameArea');
-const startBtn = document.querySelector('#gameArea-start__btn');
+const darkModeBtn = document.querySelector("#darkMode__btn");
+const startBtn = document.querySelector("#startGame__btn");
 
-const questionSection = document.querySelector('#question');
-const questionImage = document.querySelector('#question__img');
-const questionText = document.querySelector('#question__p');
+const gameArea = document.querySelector("#gameArea");
 
-const answerSection = document.querySelector('#answer');
-const answerAlternatives = document.querySelector('#answer-alternatives');
-const commitBtn = document.querySelector('#answer-commit__btn');
 
-const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
+const questionSection = document.querySelector("#question");
+const questionImage = document.querySelector("#question__img");
+const questionText = document.querySelector("#question__p");
+
+const answerSection = document.querySelector("#answer");
+const answerAlternatives = document.querySelector("#answer-alternatives");
+const commitBtn = document.querySelector("#commitAnswer__btn");
+
+const resetGameBtn = document.querySelector("#resetGame__btn");
 
 //Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;

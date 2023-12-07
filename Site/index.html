@@ -8,14 +8,15 @@
 </head>
 <body>
     <header>
-        <section id="titleBar">
-            <h1>INSERT QUIZ NAME</h1>
-            <button id="titleBar-darkMode__btn">DM</button>
-        </section>
+
     </header>
     <main>
-        <section id="gameArea">
-            <button id="gameArea-start__btn">START GAME</button>
+        <div class="container">
+            <h1>Template Name</h1>
+            <button id="darkMode__btn">DM</button>
+            <button id="startGame__btn">START GAME</button>
+        </div>
+        <section id="gameArea" class="displayNone">
             <article id="question">
                 <img id="question__img" src="" alt="">
                 <p id="question__p"></p>
@@ -23,8 +24,8 @@
             <article id="answer">
 
             </article>
-            <button id="answer-commit__btn">ANSWER!</button>
-            <button id="gameArea-resetGame__btn">RESTART!</button>
+            <button id="commitAnswer__btn">ANSWER!</button>
+            <button id="resetGame__btn">RESTART!</button>
         </section>
     </main>
     <script src="../JavaScript/main.js"></script>
