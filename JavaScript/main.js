@@ -1,3 +1,5 @@
+//Array with questions
+
 let questions = [
     {
         image:"/Assets/osirisset.avif",
@@ -86,25 +88,11 @@ const commitBtn = document.querySelector('#answer-commit__btn');
 
 const resetGameBtn = document.querySelector('#gameArea-resetGame__btn');
 
-//Selector for answer inputs and forms (content is set in later functionality)
+//Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;
 let labelForms;
 
-//Variables for answer templates and selector for the answer container 
-//(gjorde ett medvetet val att använd en sträng och fylla i html)
-let answerAlternativesAinner = `<div class="answer-alternatives" id="answer-alternativesA"><p>True or False?</p><input type="radio" id="tf-a" name="tf" value="true"><label for="tf-a">Sant</label><br><input type="radio" id="tf-b" name="tf" value="false"><label for="tf-b">Falskt</label><br></div>`;
-const answerAlternativesA = document.querySelector("#answer-alternativesA");
-
-let answerAlternativesBinner = `<div class="answer-alternatives" id="answer-alternativesB"><p>Choose One:</p><input type="radio" id="mc-a" name="mc" value="a"><label for="mc-a"></label><input type="radio" id="mc-b" name="mc" value="b"><label for="mc-b"></label><input type="radio" id="mc-c" name="mc" value="c"><label for="mc-c"></label><input type="radio" id="mc-d" name="mc" value="d"><label for="mc-d"></label></div>`;
-const answerAlternativesB = document.querySelector("#answer-alternativesB");
-
-let answerAlternativesCinner = `<div class="answer-alternatives" id="answer-alternativesC"><p>Which answers are correct?</p><input type="checkbox" id="cb-a" name="cb" value="a"><label for="cb-a"></label><input type="checkbox" id="cb-b" name="cb" value="b"><label for="cb-b"></label><input type="checkbox" id="cb-c" name="cb" value="c"><label for="cb-c"></label><input type="checkbox" id="cb-d" name="cb" value="d"><label for="cb-d"></label></div>`;
-const answerAlternativesC = document.querySelector("#answer-alternativesC");
-
-
-
-
-//Game functionality
+//Game functionality ->
 
 //Variables for storing index, copy of questions array, arr for colleecting answers, and scorekeeper.
 let q;
@@ -112,40 +100,107 @@ let questionsCopy;
 let answerArr = [];
 let score = 0;
 
-//Generate a random int based on how many questions there is
-let getRandomArrIndex = (arr) =>{
-    return Math.floor(Math.random() * arr.length);
+//Function for creating answer inputs
+let createAnswerAlts = () => {
+
+    //Global Code for all types of answers
+    let div = document.createElement("div");
+    let p = document.createElement("p");
+    div.appendChild(p);
+    div.className = "answer-alternatives";
+
+    //If question type is: True or False
+    if(questionsCopy[q].type === "tf"){
+        div.id = "answer-alternativesA";
+        p.textContent = "Sant eller Falskt?";
+
+        let trueFalseLabels = ["Sant", "Falskt"];
+        trueFalseLabels.forEach( (labelText, index) => {
+
+            let radioButton = document.createElement("input");
+            radioButton.type = "radio";
+            radioButton.id = "tf-" + (index === 0 ? "a" : "b");
+            radioButton.name = "tf";
+            radioButton.value = index === 0 ? "true" : "false";
+
+            let label = document.createElement("label");
+            label.htmlFor = "tf-" + (index === 0 ? "a" : "b");
+            label.textContent = labelText;
+
+            div.appendChild(radioButton);
+            div.appendChild(label);
+        });
+    }
+
+    //If questions type is: Multiple Choice
+    else if(questionsCopy[q].type === "mc"){
+        div.id = "answer-alternativesB";
+        p.textContent = "Vilket svar är rätt?";
+
+        let radioButtons = ["a", "b", "c", "d"];
+        radioButtons.forEach(function (value) {
+
+            let radioButton = document.createElement("input");
+            radioButton.type = "radio";
+            radioButton.id = "mc-" + value;
+            radioButton.name = "mc";
+            radioButton.value = value;
+
+            var label = document.createElement("label");
+            label.htmlFor = "mc-" + value;
+
+            div.appendChild(radioButton);
+            div.appendChild(label);
+        });
+    }
+
+    //If questions type is: Checkbox
+    else if(questionsCopy[q].type === "cb"){
+        div.id = "answer-alternativesC";
+        p.textContent = "Vilka svar är rätt?";
+
+        let checkboxes = ["a", "b", "c", "d"];
+
+        checkboxes.forEach(function (value) {
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "cb-" + value;
+        checkbox.name = "cb";
+        checkbox.value = value;
+
+        let label = document.createElement("label");
+        label.htmlFor = "cb-" + value;
+
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        });
+    }
+
+    answerSection.appendChild(div);
+
+    labelForms = [...document.querySelectorAll("label")];
+    for(let i = 0; i<labelForms.length; i++){
+        if(questionsCopy[q].type != "tf"){
+            labelForms[i].innerText = questionsCopy[q].choice[i];
+        } else{
+            labelForms[0].innerText = "True";
+            labelForms[1].innerText = "False";
+        }
+    }
 }
 
 //Generate a question
 let generateQuestion = () =>{
+    answerSection.innerHTML = "";
     answerArr = [];
-    q = getRandomArrIndex(questionsCopy);
+    q = Math.floor(Math.random() * questionsCopy.length);
 
     questionImage.src = questionsCopy[q].image;
     questionText.innerText = questionsCopy[q].question;
     
-
-    if(questionsCopy[q].type === "tf"){
-        answerSection.innerHTML = answerAlternativesAinner;
-        answerInputs = [...document.querySelectorAll('[name = tf]')];
-    }
-    else if(questionsCopy[q].type === "mc"){
-        answerSection.innerHTML = answerAlternativesBinner;
-        answerInputs = [...document.querySelectorAll('[name = mc]')];
-    }
-    else if(questionsCopy[q].type === "cb"){
-        answerSection.innerHTML = answerAlternativesCinner;
-        answerInputs = [...document.querySelectorAll('[name = cb]')];
-    }
-
-    labelForms = [...document.querySelectorAll("label")];
-
-    for(let i = 0; i<labelForms.length; i++){
-        if(questionsCopy[q].type != "tf"){
-            labelForms[i].innerText = questionsCopy[q].choice[i];
-        }
-    }
+    createAnswerAlts();
+    answerInputs = [...document.querySelectorAll(`[name = ${questionsCopy[q].type}]`)];
 }
 
 //Start Game
@@ -164,8 +219,7 @@ commitBtn.addEventListener("click", () => {
     if(answerArr.toString() === questionsCopy[q].answer.toString()){
         alert("yeehaw!");
         score ++;
-    }
-    else(alert("oh nooes!"));
+    } else(alert("oh nooes!"));
 
     questionsCopy.splice(q, 1);
     generateQuestion();
