@@ -87,9 +87,9 @@ const questionImage = document.querySelector("#question__img");
 const questionText = document.querySelector("#question__p");
 
 const answerSection = document.querySelector("#answer");
-const commitBtn = document.querySelector("#commitAnswer__btn");
+const commitBtn = document.querySelector("#commit-answer__btn");
 
-const resetGameBtn = document.querySelector("#resetGame__btn");
+const resetGameBtn = document.querySelector("#reset-game__btn");
 
 //Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;
