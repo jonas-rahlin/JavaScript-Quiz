@@ -105,6 +105,10 @@ let questionsCopy;
 let answerArr = [];
 let score = 0;
 
+//Arrays for collecting rightly and wrongly answered questions
+let wrongAnswer = [];
+let correctAnswer = [];
+
 //Function for creating answer inputs
 let createAnswerAlts = () => {
 
@@ -179,7 +183,7 @@ let createAnswerAlts = () => {
 
     answerSection.appendChild(div);
 
-    let labelForms = [...document.querySelectorAll("label")];
+    labelForms = [...document.querySelectorAll("label")];
     for(let i = 0; i<labelForms.length; i++){
         if(questionsCopy[q].type != "tf"){
             labelForms[i].innerText = questionsCopy[q].choice[i];
@@ -202,6 +206,33 @@ let generateQuestion = () =>{
     createAnswerAlts();
     answerInputs = [...document.querySelectorAll(`[name = ${questionsCopy[q].type}]`)];
 }
+
+//Generate Colors for Correct and faulty answers
+let colorCorrectAnswer = ()=> {
+    let idArr = [];
+    answerInputs.forEach((input)=>{
+        if(questionsCopy[q].answer.includes(input.value)){
+            idArr.push(input.id);
+        }
+    })
+
+    answerInputs.forEach((input) => {
+        let stringAnswers = questionsCopy[q].answer.map((answer) => answer.toString());
+    
+        if (stringAnswers.includes(String(input.value))) {
+            idArr.push(input.id);
+        }
+    });
+
+    labelForms.forEach((form)=>{
+        if(idArr.includes(form.getAttribute("for"))){
+            form.style.backgroundColor = "green";
+        } else{
+            form.style.backgroundColor = "red";
+        }
+    })
+}
+
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
@@ -250,6 +281,10 @@ darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.firstChild.classList.toggle("displayNone");
     darkModeBtn.lastChild.classList.toggle("displayNone");
     document.body.classList.toggle("darkMode");
-})
+});
+
+
+
+
 
 

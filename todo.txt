@@ -2,10 +2,14 @@
 2. Design simple wireframe (then style as we go).
 3. Start building basic HTML and then go as needed from there.
 
-Funktion för att visa färg på rätt svar.
+
+DarkMode.
+
+Restart.
 
 Skugga för meddelande.
-Skugga för 
+
+
 
 
 @ textContent Questions
