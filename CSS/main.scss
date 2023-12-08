@@ -8,10 +8,19 @@
     padding: 0;
 }
 
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --h1: #52708e;
+    --c1: rgb(198, 63, 63);
+    --c2: rgb(41, 51, 127);
+    --c3: rgb(91, 127, 41);
+}
+
 main{
     height:100svh;
-    background-color: $color-a;
-    color:$white;
+    background-color: var(--bg);
+    color: var(--text);
     position:relative;
 
     #dark-mode__btn{
@@ -20,8 +29,8 @@ main{
         position:absolute;
         top:2rem;
         right:2rem;
-        border:solid 3px $white;
-        color:$white;
+        border:solid 3px var(--text);
+        color:var(--text);
         border-radius: 50%;
         background:none;
         outline:none;
@@ -47,7 +56,7 @@ main{
     h1{
         font-family: $font-a;
         font-size: 8rem;
-        color:$white;
+        color:var(--h1);
     }
 
     #start-game__btn{
@@ -57,7 +66,7 @@ main{
         border:none;
         background:none;
         outline:none;
-        color:$white;
+        color:var(--text);
     }
 }
 
@@ -106,19 +115,19 @@ main{
             input{
                 display:none;
                 &:checked + label {
-                    background-color: $color-b;
+                    background-color: var(--c2);
                  }
             }
 
             label{
                 padding:0.5rem 1rem;
-                border:solid 3px white;
+                border:solid 3px var(--text);
                 border-radius: 0.3rem;
                 margin:0rem 1rem;
                 cursor: pointer;
 
                 &:hover{
-                    background-color: $color-b;
+                    background-color: var(--c2);
                 }
             }
         }
@@ -130,19 +139,19 @@ main{
         background:none;
         border:none;
         outline:none;
-        border:solid 3px white;
+        border:solid 3px var(--text);
         border-radius: 0.3rem;
         font-size: 1.5rem;
         padding:0.5rem 1rem;
-        color:$black;
-        background-color: $color-c;
+        color:var(--text);
+        background-color: var(--c3);
     }
 
     #reset-game__btn{
         position:absolute;
         bottom:2rem;
         right:2rem;
-        color:$white;
+        color:var(--bg);
         background:none;
         border:none;
         outline:none;
@@ -168,9 +177,10 @@ main{
         transform: translate(-50%, -50%);
         font-family:$font-a;
         font-size: 6rem;
-        background-color: $color-a;
+        background-color: var(--bg);
         border-radius: 0.3rem;
-        border:solid 3px white;
+        border:solid 3px var(--text);
+        color: var(--text);
         padding:1rem;
     }
 }
@@ -188,7 +198,8 @@ main{
     justify-content: center;
     padding:2rem;
     border-radius: 0.3rem;
-    background-color:$color-a;
+    border: solid 3px var(--text);
+    background-color:var(--bg);
 
     ul{
         list-style-type: none;
