@@ -1,5 +1,4 @@
 //Array with questions
-
 let questions = [
     {
         image:"/Assets/osirisset.avif",
@@ -89,6 +88,8 @@ const resetGameBtn = document.querySelector("#reset-game__btn");
 
 const messageDisplay = document.querySelector("#message-display");
 const resultDisplay = document.querySelector("#result-display");
+
+const root = document.documentElement;
 
 //Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;
@@ -191,7 +192,7 @@ let createAnswerAlts = () => {
     }
 }
 
-//Generate a question
+//Function for generating a question
 let generateQuestion = () =>{
     answerSection.innerHTML = "";
     answerArr = [];
@@ -204,7 +205,7 @@ let generateQuestion = () =>{
     answerInputs = [...document.querySelectorAll(`[name = ${questionsCopy[q].type}]`)];
 }
 
-//Generate Colors for Correct and faulty answers
+//Function for generating colors for correct and faulty answers
 let colorCorrectAnswer = ()=> {
     let idArr = [];
     answerInputs.forEach((input)=>{
@@ -265,6 +266,25 @@ let showResult = ()=>{
     resultDisplay.classList.remove("displayNone");
 }
 
+//Function for setting color variables
+let setColors = () => {
+    if(document.body.classList.contains("darkMode")){
+        root.style.setProperty('--bg', '#000000');
+        root.style.setProperty('--text', '#ffffff');
+        root.style.setProperty('--h1', '#8fa0b2');
+        root.style.setProperty('--c1', '#c63f3f');
+        root.style.setProperty('--c2', '#29337f');
+        root.style.setProperty('--c3', '#5b7f29');
+    }
+    else{
+        root.style.setProperty('--bg', '#ffffff');
+        root.style.setProperty('--text', '#00000');
+        root.style.setProperty('--h1', '#8fa0b2');
+        root.style.setProperty('--c1', '#c63f3f');
+        root.style.setProperty('--c2', '#29337f');
+        root.style.setProperty('--c3', '#5b7f29');
+    }
+}
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
@@ -329,14 +349,13 @@ darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.firstChild.classList.toggle("displayNone");
     darkModeBtn.lastChild.classList.toggle("displayNone");
     document.body.classList.toggle("darkMode");
+    setColors();
 });
 
 //Restart the Game
 resetGameBtn.addEventListener("click", ()=>{
     resetGame();
 })
-
-
 
 
 
