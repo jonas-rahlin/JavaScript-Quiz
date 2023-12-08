@@ -5,15 +5,6 @@
 
 DarkMode.
 
-Restart.
+messag display background background
 
-Skugga för meddelande.
-
-
-
-
-@ textContent Questions
-
-
-Ideas:
-    True / False = Green / Red linethrough.
+Slut styling och animationer.

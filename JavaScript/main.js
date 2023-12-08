@@ -70,9 +70,6 @@ let questions = [
     },
 ];
 
-
-
-
 // Selectors Main Section
 const startArea = document.querySelector("#start-area");
 
@@ -80,7 +77,6 @@ const darkModeBtn = document.querySelector("#dark-mode__btn");
 const startBtn = document.querySelector("#start-game__btn");
 
 const gameArea = document.querySelector("#game-area");
-
 
 const questionSection = document.querySelector("#question");
 const questionImage = document.querySelector("#question__img");
@@ -92,6 +88,7 @@ const commitBtn = document.querySelector("#commit-answer__btn");
 const resetGameBtn = document.querySelector("#reset-game__btn");
 
 const messageDisplay = document.querySelector("#message-display");
+const resultDisplay = document.querySelector("#result-display");
 
 //Selectors for answer inputs and forms (content is set in later functionality)
 let answerInputs;
@@ -246,6 +243,28 @@ let resetGame = ()=>{
     gameArea.classList.add("displayNone");
 }
 
+//Function for displaying the result on screen
+let showResult = ()=>{
+    let right = document.createElement("ul");
+    right.textContent = "RÄTT";
+    correctAnswer.forEach((object)=>{
+        let question = document.createElement("li");
+        question.textContent = object.question;
+        right.append(question);
+    })
+
+    let wrong = document.createElement("ul");
+    wrong.textContent = "FEL";
+    wrongAnswer.forEach((object)=>{
+        let question = document.createElement("li");
+        question.textContent = object.question;
+        wrong.append(question);
+    })
+
+    resultDisplay.append(right, wrong);
+    resultDisplay.classList.remove("displayNone");
+}
+
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
@@ -261,35 +280,48 @@ startBtn.addEventListener("click", ()=>{
 
 //Answer question
 commitBtn.addEventListener("click", () => {
-    answerInputs.forEach((input) => {
-        if (input.checked === true) {
-            answerArr.push(input.value);
-        }
-    });
+    //If there are no questions left
+    if(questionsCopy.length === 1){
+            showResult();
+    }
 
-    if(answerArr.toString() === questionsCopy[q].answer.toString()){
-        score ++;
-        let correct = document.createElement("h2");
-        correct.textContent = "RÄTT!";
-        messageDisplay.append(correct);
-    } 
+    //If there is more questions left
     else{
-        let wrong = document.createElement("h2");
-        wrong.textContent = "FEL!";
-        messageDisplay.append(wrong);
-    };
-
-    colorCorrectAnswer();
-
-    messageDisplay.classList.remove("displayNone");
-
-    questionsCopy.splice(q, 1);
-
-    setTimeout(()=>{
-        messageDisplay.classList.add("displayNone");
-        generateQuestion();
-        messageDisplay.innerHTML = "";
-    },1200)
+        answerInputs.forEach((input) => {
+            if (input.checked === true) {
+                answerArr.push(input.value);
+            }
+        });
+    
+        //If the answer is correct
+        if(answerArr.toString() === questionsCopy[q].answer.toString()){
+            score ++;
+            correctAnswer.push(questionsCopy[q]);
+            let correct = document.createElement("h2");
+            correct.textContent = "RÄTT!";
+            messageDisplay.append(correct);
+        }
+    
+        //If the answer is wrong
+        else{
+            wrongAnswer.push(questionsCopy[q]);
+            let wrong = document.createElement("h2");
+            wrong.textContent = "FEL!";
+            messageDisplay.append(wrong);
+        };
+    
+        colorCorrectAnswer();
+    
+        messageDisplay.classList.remove("displayNone");
+    
+        questionsCopy.splice(q, 1);
+    
+        setTimeout(()=>{
+            messageDisplay.classList.add("displayNone");
+            generateQuestion();
+            messageDisplay.innerHTML = "";
+        },1200)
+    }
 });
 
 //Enable Dark Mode
@@ -303,6 +335,8 @@ darkModeBtn.addEventListener("click", ()=>{
 resetGameBtn.addEventListener("click", ()=>{
     resetGame();
 })
+
+
 
 
 

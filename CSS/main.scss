@@ -168,5 +168,52 @@ main{
         transform: translate(-50%, -50%);
         font-family:$font-a;
         font-size: 6rem;
+        background-color: $color-a;
+        border-radius: 0.3rem;
+        border:solid 3px white;
+        padding:1rem;
+    }
+}
+
+#result-display{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:3;
+    height: 75%;
+    width: 75%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:2rem;
+    border-radius: 0.3rem;
+    background-color:$color-a;
+
+    ul{
+        list-style-type: none;
+        height:100%;
+        text-align: center;
+        font-size: 2rem;
+        font-family: $font-b;
+        width:50%;
+
+        li{
+            text-align: left;
+            font-size: 1.5rem;
+            margin:1rem;
+        }
+    }
+
+    ul:nth-of-type(1){
+        li{
+            color:green;
+        }
+    }
+
+    ul:nth-of-type(2){
+        li{
+            color:red;
+        }
     }
 }
