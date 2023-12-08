@@ -246,6 +246,7 @@ startBtn.addEventListener("click", ()=>{
     }, "1200");
 })
 
+//Answer question
 commitBtn.addEventListener("click", () => {
     answerInputs.forEach((input) => {
         if (input.checked === true) {
@@ -264,6 +265,8 @@ commitBtn.addEventListener("click", () => {
         wrong.textContent = "FEL!";
         messageDisplay.append(wrong);
     };
+
+    colorCorrectAnswer();
 
     messageDisplay.classList.remove("displayNone");
 
