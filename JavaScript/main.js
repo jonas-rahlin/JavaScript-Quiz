@@ -21,7 +21,7 @@ let questions = [
     },
     {
         image:"/Assets/apple.avif",
-        question: "Vilken grekisk guddina skapade kaos på gudafest med sitt gyllende äpple?",
+        question: "Vilken grekisk gudinna skapade kaos på gudafest med sitt gyllende äpple?",
         type: "mc",
         answer: ["b"],
         choice: ["Athena", "Eris", "Aphrodite", "Hecate"],
@@ -278,13 +278,16 @@ let setColors = () => {
     }
     else{
         root.style.setProperty('--bg', '#ffffff');
-        root.style.setProperty('--text', '#00000');
+        root.style.setProperty('--text', '#000000');
         root.style.setProperty('--h1', '#8fa0b2');
         root.style.setProperty('--c1', '#c63f3f');
         root.style.setProperty('--c2', '#29337f');
         root.style.setProperty('--c3', '#5b7f29');
     }
 }
+
+//Set color theme
+setColors();
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
