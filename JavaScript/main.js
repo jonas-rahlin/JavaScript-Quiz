@@ -233,6 +233,19 @@ let colorCorrectAnswer = ()=> {
     })
 }
 
+//Function for restarting the Game
+let resetGame = ()=>{
+    questionsCopy = [];
+    answerArr = [];
+    score = 0;
+    wrongAnswer = [];
+    correctAnswer = [];
+
+    answerSection.innerHTML = "";
+    startArea.classList.remove("displayNone");
+    gameArea.classList.add("displayNone");
+}
+
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
@@ -286,17 +299,10 @@ darkModeBtn.addEventListener("click", ()=>{
     document.body.classList.toggle("darkMode");
 });
 
-
-let restartGame = ()=>{
-    questionsCopy = [];
-    answerArr = [];
-    score = 0;
-    wrongAnswer = [];
-    correctAnswer = [];
-
-    answerSection.innerHTML = "";
-    startArea.classList.remove("displayNone");
-}
+//Restart the Game
+resetGameBtn.addEventListener("click", ()=>{
+    resetGame();
+})
 
 
 
