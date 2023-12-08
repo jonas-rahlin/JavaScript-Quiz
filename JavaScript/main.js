@@ -101,7 +101,7 @@ let labelForms;
 
 //Variables for storing index, copy of questions array, arr for colleecting answers, and scorekeeper.
 let q;
-let questionsCopy;
+let questionsCopy = [];
 let answerArr = [];
 let score = 0;
 
@@ -285,6 +285,18 @@ darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.lastChild.classList.toggle("displayNone");
     document.body.classList.toggle("darkMode");
 });
+
+
+let restartGame = ()=>{
+    questionsCopy = [];
+    answerArr = [];
+    score = 0;
+    wrongAnswer = [];
+    correctAnswer = [];
+
+    answerSection.innerHTML = "";
+    startArea.classList.remove("displayNone");
+}
 
 
 
