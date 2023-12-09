@@ -1,5 +1,7 @@
-@import "./variables";
 @import "./jsClasses";
+
+$font-a: 'Playfair Display', serif;
+$font-b: 'Roboto Condensed', sans-serif;
 
 *{
     -webkit-box-sizing: border-box;
@@ -109,7 +111,7 @@ main{
                     background-color: var(--c2);
                  }
             }
-
+            color:#131313;
             label{
                 padding:0.5rem 1rem;
                 border:solid 3px var(--text);
@@ -119,6 +121,7 @@ main{
 
                 &:hover{
                     background-color: var(--c2);
+                    transform:scale(0.98);
                 }
             }
         }
@@ -136,13 +139,17 @@ main{
         padding:0.5rem 1rem;
         color:var(--text);
         background-color: var(--c3);
+
+        &:hover{
+            transform:scale(0.99);
+        }
     }
 
     #reset-game__btn{
         position:absolute;
         bottom:2rem;
         right:2rem;
-        color:var(--bg);
+        color:var(--text);
         background:none;
         border:none;
         outline:none;
@@ -182,10 +189,10 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index:3;
-    height: 75%;
+    height: 90%;
     width: 75%;
     display:flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding:2rem;
     border-radius: 0.3rem;
@@ -209,13 +216,13 @@ main{
 
     ul:nth-of-type(1){
         li{
-            color:green;
+            color:#359035;
         }
     }
 
     ul:nth-of-type(2){
         li{
-            color:red;
+            color:#d63737;
         }
     }
 }

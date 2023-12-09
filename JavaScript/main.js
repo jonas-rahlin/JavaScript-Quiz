@@ -110,7 +110,7 @@ let correctAnswer = [];
 //Function for creating answer inputs
 let createAnswerAlts = () => {
 
-    //Global Code for all types of answers
+    //Global code for all types of answers
     let div = document.createElement("div");
     div.className = "answer-alternatives";
 
@@ -186,8 +186,8 @@ let createAnswerAlts = () => {
         if(questionsCopy[q].type != "tf"){
             labelForms[i].innerText = questionsCopy[q].choice[i];
         } else{
-            labelForms[0].innerText = "True";
-            labelForms[1].innerText = "False";
+            labelForms[0].innerText = "Sant";
+            labelForms[1].innerText = "Falskt";
         }
     }
 }
@@ -224,9 +224,9 @@ let colorCorrectAnswer = ()=> {
 
     labelForms.forEach((form)=>{
         if(idArr.includes(form.getAttribute("for"))){
-            form.style.backgroundColor = "green";
+            form.style.backgroundColor = "#359035";
         } else{
-            form.style.backgroundColor = "red";
+            form.style.backgroundColor = "#d63737";
         }
     })
 }
@@ -246,12 +246,13 @@ let resetGame = ()=>{
 
 //Function for displaying the result on screen
 let showResult = ()=>{
-    let right = document.createElement("ul");
-    right.textContent = "RÄTT";
+    let correct = document.createElement("ul");
+    correct.textContent = "RÄTT";
+    
     correctAnswer.forEach((object)=>{
         let question = document.createElement("li");
         question.textContent = object.question;
-        right.append(question);
+        correct.append(question);
     })
 
     let wrong = document.createElement("ul");
@@ -268,21 +269,20 @@ let showResult = ()=>{
 
 //Function for setting color variables
 let setColors = () => {
-    if(document.body.classList.contains("darkMode")){
-        root.style.setProperty('--bg', '#000000');
-        root.style.setProperty('--text', '#ffffff');
-        root.style.setProperty('--h1', '#8fa0b2');
-        root.style.setProperty('--c1', '#c63f3f');
-        root.style.setProperty('--c2', '#29337f');
-        root.style.setProperty('--c3', '#5b7f29');
-    }
-    else{
-        root.style.setProperty('--bg', '#ffffff');
-        root.style.setProperty('--text', '#000000');
-        root.style.setProperty('--h1', '#8fa0b2');
-        root.style.setProperty('--c1', '#c63f3f');
-        root.style.setProperty('--c2', '#29337f');
-        root.style.setProperty('--c3', '#5b7f29');
+    if (document.body.classList.contains("darkMode")) {
+        root.style.setProperty('--bg', '#222222');
+        root.style.setProperty('--text', '#FFFFFF');
+        root.style.setProperty('--h1', '#FFD700');
+        root.style.setProperty('--c1', '#483D8B');
+        root.style.setProperty('--c2', '#8c6c41;');
+        root.style.setProperty('--c3', '#8fa0b2');
+    } else {
+        root.style.setProperty('--bg', '#ede1b9');
+        root.style.setProperty('--text', '#222222');
+        root.style.setProperty('--h1', '#6a5a2e');
+        root.style.setProperty('--c1', '#483D8B');
+        root.style.setProperty('--c2', '#8c6c41');
+        root.style.setProperty('--c3', '#8fa0b2');
     }
 }
 
@@ -322,6 +322,7 @@ commitBtn.addEventListener("click", () => {
             correctAnswer.push(questionsCopy[q]);
             let correct = document.createElement("h2");
             correct.textContent = "RÄTT!";
+            correct.style.backgroundColor = "#359035";
             messageDisplay.append(correct);
         }
     
@@ -330,6 +331,7 @@ commitBtn.addEventListener("click", () => {
             wrongAnswer.push(questionsCopy[q]);
             let wrong = document.createElement("h2");
             wrong.textContent = "FEL!";
+            wrong.style.backgroundColor = "#d63737";
             messageDisplay.append(wrong);
         };
     
