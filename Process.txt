@@ -1,9 +1,10 @@
+Process:
 1. Skapade enkla wireframes
 2. Skapade HTML för alla element, inkl. id och class taggar.
 3. Simpel CSS styling.
 
 4. Fråge object i JS.
-5. Selectors i JS. (chat GPT).
+5. Selectors i JS.
 6. Funktioner och logik i JS.
 
 7. Avancerad styling i CSS.
@@ -13,3 +14,25 @@
 10. Finslipning.
 
 Processen var inte helt linjär. Hoppade mellan stegen efter behov, vid oväntade händelser.
+
+Problem:
+Hur slipper jag skriva alla id och class selectors?
+Bad chatGPT skriva dom utifrån html koden.
+
+Ska jag använda en innerHTML sträng (som redan är skriven) istället för create.elements?
+Nej. CreateElement är snabbare och säkrare.
+
+Hur slipper jag sitta och skriva ner all syntax för att skapa Elementen?
+Bad chat GPT skapa syntaxen utifrån innrtHTML strängarna.
+
+Hur löser jag Dark Mode?
+Satte CSS variabler genom JS istället för i CSS.
+
+Hur löser jag det så att användaren inte kan klicka flera gånger för att generera ett svar, och därmed trigga funktioner i förtid?
+Satte en timeout i JS, och lade till / tog bort en klass med "pointerevents:none".
+
+Hur får jag JS att kopiera en array med objekt till en ny variabel, istället för att referera till den?
+Använda .slice() metoden för att kopiera arrayen.
+
+Generisk felsökning i kod som till synes borde fungera?
+Använde chatGPT.
