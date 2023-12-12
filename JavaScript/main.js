@@ -8,7 +8,7 @@ let questions = [
     },
     {
         image:"/Assets/rainbow.avif",
-        question: "Myten om Regnbågsormen härstammar från Aboriginerna i Australien.",
+        question: "Myten om Regnbågsormen härstammar bla. från Aboriginerna i Australien.",
         type: "tf",
         answer: [true],
     },
