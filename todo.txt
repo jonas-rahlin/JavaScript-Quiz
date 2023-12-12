@@ -1,7 +1,0 @@
-1. Choose Quiz Theme
-2. Design simple wireframe (then style as we go).
-3. Start building basic HTML and then go as needed from there.
-
-Slut styling och animationer.
-
-darkmode browser?
