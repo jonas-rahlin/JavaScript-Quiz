@@ -14,7 +14,7 @@ let questions = [
     },
     {
         image:"/Assets/hebrew.avif",
-        question: "Vem delade på det röda havet",
+        question: "Vem delade på det röda havet?",
         type: "mc",
         answer: ["b"],
         choice: ["Daniel", "Moses", "Noah", "Pharaoh"],
