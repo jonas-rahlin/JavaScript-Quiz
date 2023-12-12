@@ -247,7 +247,7 @@ let resetGame = ()=>{
 //Function for displaying the result on screen
 let showResult = ()=>{
     let correct = document.createElement("ul");
-    correct.textContent = "RÄTT";
+    correct.textContent = "RÄTT" + " - " + ((score / questions.length) * 100) + "%";
     
     correctAnswer.forEach((object)=>{
         let question = document.createElement("li");
@@ -256,7 +256,7 @@ let showResult = ()=>{
     })
 
     let wrong = document.createElement("ul");
-    wrong.textContent = "FEL";
+    wrong.textContent = "FEL" + " - " + (questions.length - score) / questions.length * 100 + "%";
     wrongAnswer.forEach((object)=>{
         let question = document.createElement("li");
         question.textContent = object.question;
@@ -275,7 +275,7 @@ let setColors = () => {
         root.style.setProperty('--h1', '#FFD700');
         root.style.setProperty('--c1', '#483D8B');
         root.style.setProperty('--c2', '#8c6c41;');
-        root.style.setProperty('--c3', '#8fa0b2');
+        root.style.setProperty('--c3', '#4f330e');
     } else {
         root.style.setProperty('--bg', '#ede1b9');
         root.style.setProperty('--text', '#222222');
@@ -291,7 +291,7 @@ setColors();
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
-    questionsCopy = questions;
+    questionsCopy = questions.slice();
     generateQuestion();
 
     startArea.classList.add("displayNone");
@@ -303,6 +303,10 @@ startBtn.addEventListener("click", ()=>{
 
 //Answer question
 commitBtn.addEventListener("click", () => {
+    document.body.classList.add("disableClick");
+    setTimeout(()=>{
+        document.body.classList.remove("disableClick");  
+    }, 1200)
     answerInputs.forEach((input) => {
         if (input.checked === true) {
             answerArr.push(input.value);
@@ -358,6 +362,8 @@ darkModeBtn.addEventListener("click", ()=>{
 //Restart the Game
 resetGameBtn.addEventListener("click", ()=>{
     resetGame();
+    resultDisplay.classList.add("displayNone");
+    messageDisplay.classList.remove("displayNone");
 })
 
 

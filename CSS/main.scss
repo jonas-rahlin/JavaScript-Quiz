@@ -104,6 +104,7 @@ main{
             justify-content: center;
             margin:0 auto;
             padding:2rem;
+            color:var(--text);
 
             input{
                 display:none;
@@ -111,7 +112,7 @@ main{
                     background-color: var(--c2);
                  }
             }
-            color:#131313;
+            
             label{
                 padding:0.5rem 1rem;
                 border:solid 3px var(--text);
@@ -189,8 +190,8 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index:3;
-    height: 90%;
-    width: 75%;
+    height: 95%;
+    width: 80%;
     display:flex;
     align-items: flex-start;
     justify-content: center;
