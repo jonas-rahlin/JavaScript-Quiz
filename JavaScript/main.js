@@ -55,7 +55,7 @@ let questions = [
     },
     {
         image:"/Assets/gita.avif",
-        question: "Vilken gud syns slåss vid Arjunas sida i Kurukshetra kriget?",
+        question: "Vilken gud slåss vid Arjunas sida i Kurukshetra kriget?",
         type: "mc",
         answer: ["a"],
         choice: ["Krishna", "Hanuman", "Ganesha", "Lakshmi"],
