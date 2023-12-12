@@ -13,7 +13,7 @@ let questions = [
         answer: [true],
     },
     {
-        image:"/Assets/judah.avif",
+        image:"/Assets/hebrew.avif",
         question: "Vem delade på det röda havet",
         type: "mc",
         answer: ["b"],
