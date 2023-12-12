@@ -1,0 +1,15 @@
+1. Skapade enkla wireframes
+2. Skapade HTML för alla element, inkl. id och class taggar.
+3. Simpel CSS styling.
+
+4. Fråge object i JS.
+5. Selectors i JS. (chat GPT).
+6. Funktioner och logik i JS.
+
+7. Avancerad styling i CSS.
+8. Darkmode variabler i JS.
+
+9. Buggtest och korrektion.
+10. Finslipning.
+
+Processen var inte helt linjär. Hoppade mellan stegen efter behov, vid oväntade händelser.
