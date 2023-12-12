@@ -95,7 +95,7 @@ const root = document.documentElement;
 let answerInputs;
 let labelForms;
 
-//Game functionality ->
+//Game functionality --->
 
 //Variables for storing index, copy of questions array, arr for colleecting answers, and scorekeeper.
 let q;
@@ -224,9 +224,9 @@ let colorCorrectAnswer = ()=> {
 
     labelForms.forEach((form)=>{
         if(idArr.includes(form.getAttribute("for"))){
-            form.style.backgroundColor = "#359035";
+            form.style.backgroundColor = "var(--correct)";
         } else{
-            form.style.backgroundColor = "#d63737";
+            form.style.backgroundColor = "var(--wrong)";
         }
     })
 }
@@ -271,6 +271,7 @@ let showResult = ()=>{
 let setColors = () => {
     root.style.setProperty('--correct', '#359035');
     root.style.setProperty('--wrong', '#d63737');
+    root.style.setProperty('--yellow', '#f9f94e');
     if (document.body.classList.contains("darkMode")) {
         root.style.setProperty('--bg', '#222222');
         root.style.setProperty('--text', '#FFFFFF');
@@ -334,17 +335,48 @@ commitBtn.addEventListener("click", () => {
         messageDisplay.append(wrong);
     };
 
+    //Show Answer
     colorCorrectAnswer();
-
     messageDisplay.classList.remove("displayNone");
 
+    //Delete question
     questionsCopy.splice(q, 1);
 
-
-
+    //If the quiz is over then show grades
     if(questionsCopy.length === 0){
-        showResult();
-    } else{
+        setTimeout(()=>{
+            messageDisplay.innerHTML = "";
+            messageDisplay.classList.add("displayNone");
+        },1200)
+        
+        setTimeout(()=>{
+            let grade = document.createElement("h2");
+            if((score / questions.length) * 100 < 50){
+                grade.textContent = "IG!";
+                grade.style.backgroundColor = "var(--wrong)";
+            }
+
+            else if((score / questions.length) * 100 >= 50 && (score / questions.length) * 100 < 75){
+                grade.textContent = "G!";
+                grade.style.backgroundColor = "var(--yellow)";
+            } 
+            
+            else{
+                grade.textContent = "VG!";
+                grade.style.backgroundColor = "var(--correct)";
+            }
+            messageDisplay.append(grade);
+            messageDisplay.classList.remove("displayNone");
+        },2400)
+
+        //Show Result
+        setTimeout(()=>{
+            showResult();
+        },4800)
+    } 
+
+    //If the quiz is not over, then generate next question
+    else{
         setTimeout(()=>{
             messageDisplay.classList.add("displayNone");
             generateQuestion();
