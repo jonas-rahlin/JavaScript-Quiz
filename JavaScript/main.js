@@ -363,7 +363,7 @@ darkModeBtn.addEventListener("click", ()=>{
 resetGameBtn.addEventListener("click", ()=>{
     resetGame();
     resultDisplay.classList.add("displayNone");
-    messageDisplay.classList.remove("displayNone");
+    messageDisplay.classList.add("displayNone");
 })
 
 
