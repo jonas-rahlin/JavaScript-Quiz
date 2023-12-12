@@ -21,7 +21,7 @@ let questions = [
     },
     {
         image:"/Assets/apple.avif",
-        question: "Vilken grekisk gudinna skapade kaos på gudafest med sitt gyllende äpple?",
+        question: "Vilken grekisk gudinna skapade kaos på gudabröllop med sitt gyllene äpple?",
         type: "mc",
         answer: ["b"],
         choice: ["Athena", "Eris", "Aphrodite", "Hecate"],
@@ -69,21 +69,17 @@ let questions = [
     },
 ];
 
-// Selectors Main Section
-const startArea = document.querySelector("#start-area");
-
-const darkModeBtn = document.querySelector("#dark-mode__btn");
+//Selectors
 const startBtn = document.querySelector("#start-game__btn");
+const startArea = document.querySelector("#start-area");
+const darkModeBtn = document.querySelector("#dark-mode__btn");
 
 const gameArea = document.querySelector("#game-area");
-
 const questionSection = document.querySelector("#question");
 const questionImage = document.querySelector("#question__img");
 const questionText = document.querySelector("#question__p");
-
 const answerSection = document.querySelector("#answer");
 const commitBtn = document.querySelector("#commit-answer__btn");
-
 const resetGameBtn = document.querySelector("#reset-game__btn");
 
 const messageDisplay = document.querySelector("#message-display");
@@ -91,28 +87,28 @@ const resultDisplay = document.querySelector("#result-display");
 
 const root = document.documentElement;
 
-//Selectors for answer inputs and forms (content is set in later functionality)
+//Selectors for answer inputs and labels (content is set in later functionality)
 let answerInputs;
 let labelForms;
 
 //Game functionality --->
 
-//Variables for storing index, copy of questions array, arr for colleecting answers, and scorekeeper.
+//Variable for storing index, copy of questions array, array for colleecting answers, and scorekeeper variable.
 let q;
 let questionsCopy = [];
 let answerArr = [];
 let score = 0;
 
 //Arrays for collecting rightly and wrongly answered questions
-let wrongAnswer = [];
 let correctAnswer = [];
+let wrongAnswer = [];
 
 //Function for creating answer inputs
 let createAnswerAlts = () => {
-
     //Global code for all types of answers
     let div = document.createElement("div");
     div.className = "answer-alternatives";
+    let label = document.createElement("label");
 
     //If question type is: True or False
     if(questionsCopy[q].type === "tf"){
@@ -120,7 +116,6 @@ let createAnswerAlts = () => {
 
         let trueFalseLabels = ["Sant", "Falskt"];
         trueFalseLabels.forEach( (labelText, index) => {
-
             let radioButton = document.createElement("input");
             radioButton.type = "radio";
             radioButton.id = "tf-" + (index === 0 ? "a" : "b");
@@ -142,7 +137,6 @@ let createAnswerAlts = () => {
 
         let radioButtons = ["a", "b", "c", "d"];
         radioButtons.forEach(function (value) {
-
             let radioButton = document.createElement("input");
             radioButton.type = "radio";
             radioButton.id = "mc-" + value;
@@ -162,25 +156,25 @@ let createAnswerAlts = () => {
         div.id = "answer-alternativesC";
 
         let checkboxes = ["a", "b", "c", "d"];
-
         checkboxes.forEach(function (value) {
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = "cb-" + value;
+            checkbox.name = "cb";
+            checkbox.value = value;
 
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = "cb-" + value;
-        checkbox.name = "cb";
-        checkbox.value = value;
+            let label = document.createElement("label");
+            label.htmlFor = "cb-" + value;
 
-        let label = document.createElement("label");
-        label.htmlFor = "cb-" + value;
-
-        div.appendChild(checkbox);
-        div.appendChild(label);
+            div.appendChild(checkbox);
+            div.appendChild(label);
         });
     }
 
+    //Append
     answerSection.appendChild(div);
 
+    //Set text for answer input labels
     labelForms = [...document.querySelectorAll("label")];
     for(let i = 0; i<labelForms.length; i++){
         if(questionsCopy[q].type != "tf"){
@@ -196,32 +190,34 @@ let createAnswerAlts = () => {
 let generateQuestion = () =>{
     answerSection.innerHTML = "";
     answerArr = [];
+
+    //Get a random index (for quiz order randomisation)
     q = Math.floor(Math.random() * questionsCopy.length);
 
     questionImage.src = questionsCopy[q].image;
     questionText.innerText = questionsCopy[q].question;
     
+    //Create Answer alternatives and save the store coresponding selectors
     createAnswerAlts();
     answerInputs = [...document.querySelectorAll(`[name = ${questionsCopy[q].type}]`)];
 }
 
-//Function for generating colors for correct and faulty answers
+//Function for generating seting colors, for correct and faulty answers
 let colorCorrectAnswer = ()=> {
+    //Collect the id for each input with correct answer
     let idArr = [];
     answerInputs.forEach((input)=>{
         if(questionsCopy[q].answer.includes(input.value)){
             idArr.push(input.id);
         }
-    })
 
-    answerInputs.forEach((input) => {
         let stringAnswers = questionsCopy[q].answer.map((answer) => answer.toString());
-    
         if (stringAnswers.includes(String(input.value))) {
             idArr.push(input.id);
         }
-    });
+    })
 
+    //Set the label colors depending on collected id's
     labelForms.forEach((form)=>{
         if(idArr.includes(form.getAttribute("for"))){
             form.style.backgroundColor = "var(--correct)";
@@ -244,8 +240,9 @@ let resetGame = ()=>{
     gameArea.classList.add("displayNone");
 }
 
-//Function for displaying the result on screen
+//Function for creating and displaying the quiz results
 let showResult = ()=>{
+    //Correct Answers
     let correct = document.createElement("ul");
     correct.textContent = "RÄTT" + " - " + ((score / questions.length) * 100) + "%";
     
@@ -255,6 +252,7 @@ let showResult = ()=>{
         correct.append(question);
     })
 
+    //Wrong answers
     let wrong = document.createElement("ul");
     wrong.textContent = "FEL" + " - " + (questions.length - score) / questions.length * 100 + "%";
     wrongAnswer.forEach((object)=>{
@@ -263,6 +261,7 @@ let showResult = ()=>{
         wrong.append(question);
     })
 
+    //Append
     resultDisplay.append(correct, wrong);
     resultDisplay.classList.remove("displayNone");
 }
@@ -272,6 +271,7 @@ let setColors = () => {
     root.style.setProperty('--correct', '#359035');
     root.style.setProperty('--wrong', '#d63737');
     root.style.setProperty('--yellow', '#f9f94e');
+    
     if (document.body.classList.contains("darkMode")) {
         root.style.setProperty('--bg', '#222222');
         root.style.setProperty('--text', '#FFFFFF');
@@ -289,16 +289,17 @@ let setColors = () => {
     }
 }
 
-//Set color theme
+//Set color theme on page load
 setColors();
 
 //Start Game
 startBtn.addEventListener("click", ()=>{
+    //Create Question
     questionsCopy = questions.slice();
     generateQuestion();
 
+    //Display functionality
     startArea.classList.add("displayNone");
-
     setTimeout(()=>{
         gameArea.classList.remove("displayNone");
     }, "1200");
@@ -306,10 +307,13 @@ startBtn.addEventListener("click", ()=>{
 
 //Answer question
 commitBtn.addEventListener("click", () => {
+    //Disable overclicking
     document.body.classList.add("disableClick");
     setTimeout(()=>{
         document.body.classList.remove("disableClick");  
     }, 1200)
+
+    //Collect answers
     answerInputs.forEach((input) => {
         if (input.checked === true) {
             answerArr.push(input.value);
@@ -344,34 +348,39 @@ commitBtn.addEventListener("click", () => {
 
     //If the quiz is over then show grades
     if(questionsCopy.length === 0){
+        //Display functionality
+        document.body.classList.add("disableClick");
         setTimeout(()=>{
             messageDisplay.innerHTML = "";
             messageDisplay.classList.add("displayNone");
         },1200)
         
+        //Show grade
         setTimeout(()=>{
             let grade = document.createElement("h2");
             if((score / questions.length) * 100 < 50){
                 grade.textContent = "IG!";
                 grade.style.backgroundColor = "var(--wrong)";
             }
-
+            
             else if((score / questions.length) * 100 >= 50 && (score / questions.length) * 100 < 75){
                 grade.textContent = "G!";
                 grade.style.backgroundColor = "var(--yellow)";
             } 
-            
+
             else{
                 grade.textContent = "VG!";
                 grade.style.backgroundColor = "var(--correct)";
             }
+
             messageDisplay.append(grade);
             messageDisplay.classList.remove("displayNone");
-        },2400)
+        },1800)
 
         //Show Result
         setTimeout(()=>{
             showResult();
+            document.body.classList.remove("disableClick");
         },4800)
     } 
 
@@ -387,8 +396,11 @@ commitBtn.addEventListener("click", () => {
 
 //Enable Dark Mode
 darkModeBtn.addEventListener("click", ()=>{
+    //Alter Dark Mode Icon
     darkModeBtn.firstChild.classList.toggle("displayNone");
     darkModeBtn.lastChild.classList.toggle("displayNone");
+
+    //Toggle Mode 
     document.body.classList.toggle("darkMode");
     setColors();
 });
