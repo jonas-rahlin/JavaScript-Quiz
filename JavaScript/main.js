@@ -14,10 +14,10 @@ let questions = [
     },
     {
         image:"/Assets/judah.avif",
-        question: "Judahs stam representeras ofta av vilket djur?",
+        question: "Vem delade på det röda havet",
         type: "mc",
         answer: ["b"],
-        choice: ["Elefanten", "Lejonet", "Ormen", "Örnen"],
+        choice: ["Daniel", "Moses", "Noah", "Pharaoh"],
     },
     {
         image:"/Assets/apple.avif",
@@ -55,7 +55,7 @@ let questions = [
     },
     {
         image:"/Assets/gita.avif",
-        question: "Vilken gud slåss vid Arjunas sida på stridsvagnen i Bhagavad Gita?",
+        question: "Vilken gud syns slåss vid Arjunas sida i Kurukshetra kriget?",
         type: "mc",
         answer: ["a"],
         choice: ["Krishna", "Hanuman", "Ganesha", "Lakshmi"],
@@ -149,7 +149,7 @@ let createAnswerAlts = () => {
             radioButton.name = "mc";
             radioButton.value = value;
 
-            var label = document.createElement("label");
+            let label = document.createElement("label");
             label.htmlFor = "mc-" + value;
 
             div.appendChild(radioButton);
@@ -267,8 +267,10 @@ let showResult = ()=>{
     resultDisplay.classList.remove("displayNone");
 }
 
-//Function for setting color variables
+//Function for setting color variables (used for Dark Mode)
 let setColors = () => {
+    root.style.setProperty('--correct', '#359035');
+    root.style.setProperty('--wrong', '#d63737');
     if (document.body.classList.contains("darkMode")) {
         root.style.setProperty('--bg', '#222222');
         root.style.setProperty('--text', '#FFFFFF');
@@ -319,7 +321,7 @@ commitBtn.addEventListener("click", () => {
         correctAnswer.push(questionsCopy[q]);
         let correct = document.createElement("h2");
         correct.textContent = "RÄTT!";
-        correct.style.backgroundColor = "#359035";
+        correct.style.backgroundColor = "var(--correct)";
         messageDisplay.append(correct);
     }
 
@@ -328,7 +330,7 @@ commitBtn.addEventListener("click", () => {
         wrongAnswer.push(questionsCopy[q]);
         let wrong = document.createElement("h2");
         wrong.textContent = "FEL!";
-        wrong.style.backgroundColor = "#d63737";
+        wrong.style.backgroundColor = "var(--wrong)";
         messageDisplay.append(wrong);
     };
 
