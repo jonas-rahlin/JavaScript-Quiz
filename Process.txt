@@ -34,5 +34,5 @@ Satte en timeout i JS, och lade till / tog bort en klass med "pointerevents:none
 Hur får jag JS att kopiera en array med objekt till en ny variabel, istället för att referera till den?
 Använda .slice() metoden för att kopiera arrayen.
 
-Generisk felsökning i kod som till synes borde fungera?
+Generisk felsökning i kod som till synes borde fungera.
 Använde chatGPT.
