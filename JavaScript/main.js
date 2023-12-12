@@ -263,7 +263,7 @@ let showResult = ()=>{
         wrong.append(question);
     })
 
-    resultDisplay.append(right, wrong);
+    resultDisplay.append(correct, wrong);
     resultDisplay.classList.remove("displayNone");
 }
 
@@ -303,44 +303,42 @@ startBtn.addEventListener("click", ()=>{
 
 //Answer question
 commitBtn.addEventListener("click", () => {
-    //If there are no questions left
-    if(questionsCopy.length === 1){
-            showResult();
+    answerInputs.forEach((input) => {
+        if (input.checked === true) {
+            answerArr.push(input.value);
+        }
+    });
+
+    //If the answer is correct
+    if(answerArr.toString() === questionsCopy[q].answer.toString()){
+        score ++;
+        correctAnswer.push(questionsCopy[q]);
+        let correct = document.createElement("h2");
+        correct.textContent = "RÄTT!";
+        correct.style.backgroundColor = "#359035";
+        messageDisplay.append(correct);
     }
 
-    //If there is more questions left
+    //If the answer is wrong
     else{
-        answerInputs.forEach((input) => {
-            if (input.checked === true) {
-                answerArr.push(input.value);
-            }
-        });
-    
-        //If the answer is correct
-        if(answerArr.toString() === questionsCopy[q].answer.toString()){
-            score ++;
-            correctAnswer.push(questionsCopy[q]);
-            let correct = document.createElement("h2");
-            correct.textContent = "RÄTT!";
-            correct.style.backgroundColor = "#359035";
-            messageDisplay.append(correct);
-        }
-    
-        //If the answer is wrong
-        else{
-            wrongAnswer.push(questionsCopy[q]);
-            let wrong = document.createElement("h2");
-            wrong.textContent = "FEL!";
-            wrong.style.backgroundColor = "#d63737";
-            messageDisplay.append(wrong);
-        };
-    
-        colorCorrectAnswer();
-    
-        messageDisplay.classList.remove("displayNone");
-    
-        questionsCopy.splice(q, 1);
-    
+        wrongAnswer.push(questionsCopy[q]);
+        let wrong = document.createElement("h2");
+        wrong.textContent = "FEL!";
+        wrong.style.backgroundColor = "#d63737";
+        messageDisplay.append(wrong);
+    };
+
+    colorCorrectAnswer();
+
+    messageDisplay.classList.remove("displayNone");
+
+    questionsCopy.splice(q, 1);
+
+
+
+    if(questionsCopy.length === 0){
+        showResult();
+    } else{
         setTimeout(()=>{
             messageDisplay.classList.add("displayNone");
             generateQuestion();

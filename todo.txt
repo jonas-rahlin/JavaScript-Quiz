@@ -6,5 +6,6 @@ Slut styling och animationer.
 
 %
 darkmode browser?
+fix reset
 
 Fixa svars displays storleken.
