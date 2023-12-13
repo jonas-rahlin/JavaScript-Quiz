@@ -236,8 +236,12 @@ let resetGame = ()=>{
     correctAnswer = [];
 
     answerSection.innerHTML = "";
+    resultDisplay.innerHTML = "";
     startArea.classList.remove("displayNone");
     gameArea.classList.add("displayNone");
+    resultDisplay.classList.add("displayNone");
+    messageDisplay.classList.add("displayNone");
+
 }
 
 //Function for creating and displaying the quiz results
@@ -408,8 +412,6 @@ darkModeBtn.addEventListener("click", ()=>{
 //Restart the Game
 resetGameBtn.addEventListener("click", ()=>{
     resetGame();
-    resultDisplay.classList.add("displayNone");
-    messageDisplay.classList.add("displayNone");
 })
 
 
