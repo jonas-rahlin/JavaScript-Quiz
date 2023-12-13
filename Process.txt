@@ -23,7 +23,7 @@ Ska jag använda en innerHTML sträng (som redan är skriven) istället för cre
 Nej. CreateElement är snabbare och säkrare.
 
 Hur slipper jag sitta och skriva ner all syntax för att skapa Elementen?
-Bad chat GPT skapa syntaxen utifrån innerHTML strängarna.
+Bad chat GPT skapa syntaxen utifrån innerHTML strängarna (detta krävde dock extra arbete för att se till så att jag förstod alla steg).
 
 Hur gör jag om nodelistan till en array så jag kan targeta elementen?
 Med spread syntax kan vi bla. snabbt kopiera en array till en ny array.
