@@ -363,17 +363,17 @@ commitBtn.addEventListener("click", () => {
         setTimeout(()=>{
             let grade = document.createElement("h2");
             if((score / questions.length) * 100 < 50){
-                grade.textContent = "IG!";
+                grade.textContent = "UNDERKÄNT!";
                 grade.style.backgroundColor = "var(--wrong)";
             }
             
             else if((score / questions.length) * 100 >= 50 && (score / questions.length) * 100 < 75){
-                grade.textContent = "G!";
+                grade.textContent = "BRA!";
                 grade.style.backgroundColor = "var(--yellow)";
             } 
 
             else{
-                grade.textContent = "VG!";
+                grade.textContent = "RIKTIGT BRA JOBBAT!";
                 grade.style.backgroundColor = "var(--correct)";
             }
 
