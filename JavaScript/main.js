@@ -282,7 +282,7 @@ let setColors = () => {
         root.style.setProperty('--h1', '#FFD700');
         root.style.setProperty('--c1', '#483D8B');
         root.style.setProperty('--c2', '#8c6c41;');
-        root.style.setProperty('--c3', '1f6fc4');
+        root.style.setProperty('--c3', '#1f6fc4');
     } else {
         root.style.setProperty('--bg', '#ede1b9');
         root.style.setProperty('--text', '#222222');
