@@ -242,7 +242,6 @@ let resetGame = ()=>{
     gameArea.classList.add("displayNone");
     resultDisplay.classList.add("displayNone");
     messageDisplay.classList.add("displayNone");
-
 }
 
 //Function for creating and displaying the quiz results
