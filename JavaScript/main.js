@@ -237,6 +237,7 @@ let resetGame = ()=>{
 
     answerSection.innerHTML = "";
     resultDisplay.innerHTML = "";
+    messageDisplay.innerHTML = "";
     startArea.classList.remove("displayNone");
     gameArea.classList.add("displayNone");
     resultDisplay.classList.add("displayNone");
